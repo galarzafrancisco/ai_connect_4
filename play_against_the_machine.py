@@ -39,7 +39,7 @@ agent_1 = Agent( # current gen
     player_colour='white',
     model='models/model_{}.h5'.format(latest_generation_trained) if latest_generation_trained > 1 else None
 )
-agent_1.set_randomness_level(0)
+agent_1.set_randomness_level(0.1)
 agent_1.set_probabilistic_level(0)
 agent_2 = Agent( # previous gen
     player_id=2,

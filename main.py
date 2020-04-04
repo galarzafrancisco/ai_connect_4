@@ -46,7 +46,7 @@ while True:
         player_colour='white',
         model='models/model_{}.h5'.format(current_generation) if current_generation > 1 else None
     )
-    agent_1.set_randomness_level(0)
+    agent_1.set_randomness_level(0.1)
     agent_1.set_probabilistic_level(0)
     agent_2 = Agent( # previous gen
         player_id=2,
@@ -61,7 +61,7 @@ while True:
     print('Playing a bunch of times...')
     simulation = PlayABunchOfGames(
         players=players,
-        loop=500
+        loop=5000
     )
     simulation.start()
     

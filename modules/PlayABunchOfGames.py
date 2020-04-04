@@ -62,5 +62,10 @@ class PlayABunchOfGames():
         top_moves = []
         for move in self.all_games_moves[0:int(q_games * top_percentage)]:
             top_moves += move[1]
-        # top_moves = [move[1] for move in self.all_games_moves[0:int(q_games * top_percentage)]]
+        
+        # Find the distribution of moves (ie if all the moves are number 3, that's not very helpful)
+        distribution = {}
+        for top_move in top_moves:
+            distribution[top_move[1]] = distribution.get(top_move[1], 0) + 1
+        
         return top_moves
