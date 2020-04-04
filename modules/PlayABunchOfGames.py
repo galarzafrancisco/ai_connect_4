@@ -38,6 +38,7 @@ class PlayABunchOfGames():
         q_moves_list = [iteration[0] for iteration in self.all_games_moves]
         if len(q_moves_list) == 0:
             print('This is wrong. This should not happen. But guess what? It happened!')
+            return []
         q_moves_average = sum(q_moves_list) / len(q_moves_list)
         threshold = np.ceil(q_moves_average * top_percentage)
         top_moves = []

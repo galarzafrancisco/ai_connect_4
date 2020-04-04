@@ -29,7 +29,7 @@ def calculate_randomness(generation):
     elif generation < 100:
         return 0.3, 0.25
     else:
-        return 0.3, 0.2
+        return 0.7, 0.3
         
 randomness, probablilistic = calculate_randomness(latest_generation_trained)
 
