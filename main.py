@@ -31,7 +31,7 @@ def calculate_randomness(generation):
     elif generation < 100:
         return 0.3, 0.25
     else:
-        return 0.7, 0.3
+        return 0.5, 0.3
 
 
 
@@ -46,15 +46,15 @@ while True:
         player_colour='white',
         model='models/model_{}.h5'.format(current_generation) if current_generation > 1 else None
     )
-    agent_1.set_randomness_level(randomness)
-    agent_1.set_probabilistic_level(probablilistic)
+    agent_1.set_randomness_level(0)
+    agent_1.set_probabilistic_level(0)
     agent_2 = Agent( # previous gen
         player_id=2,
         player_colour='red',
         model='models/model_{}.h5'.format(current_generation - 1) if current_generation > 1 else None
     )
-    agent_2.set_randomness_level(randomness)
-    agent_2.set_probabilistic_level(probablilistic)
+    agent_2.set_randomness_level(0.5)
+    agent_2.set_probabilistic_level(0.3)
     players = [agent_1, agent_2]
 
     # Play a bunch of times
