@@ -67,7 +67,7 @@ while True:
     
     # Get the best moves
     print('Getting the best moves...')
-    top_percentage = 0.1
+    top_percentage = 0.7
     top_moves = simulation.get_top_moves(top_percentage=top_percentage)
     while len(top_moves) < 20 and top_percentage <= 1.0:
         top_percentage += 0.1

@@ -29,7 +29,7 @@ class PlayABunchOfGames():
                 ])
     
 
-    def get_top_moves(self, top_percentage=1.0):
+    def get_moves_faster_than_average(self, top_percentage):
         """
         Returns the moves of the games that were won in less than the average number of moves
         Arguments:
@@ -47,4 +47,20 @@ class PlayABunchOfGames():
                 top_moves += game_moves[1]
         print('Average number of moves:', q_moves_average)
         print('\tThreshold: {}\tQ top moves: {}', threshold, len(top_moves))
+        return top_moves
+
+
+    def get_top_moves(self, top_percentage=0.5):
+        """
+        Returns the top X% moves ordered by number of moves
+        Arguments:
+        - top_percentage (float): pecentage of moves to return. Defaults to 50%
+        """
+        # Sort moves based on q_moves
+        self.all_games_moves.sort(key = lambda move: move[0]) # the first element on the list is the number of moves of that game
+        q_games = len(self.all_games_moves)
+        top_moves = []
+        for move in self.all_games_moves[0:int(q_games * top_percentage)]:
+            top_moves += move[1]
+        # top_moves = [move[1] for move in self.all_games_moves[0:int(q_games * top_percentage)]]
         return top_moves
