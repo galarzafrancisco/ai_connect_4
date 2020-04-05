@@ -62,10 +62,31 @@ class PlayABunchOfGames():
         top_moves = []
         for move in self.all_games_moves[0:int(q_games * top_percentage)]:
             top_moves += move[1]
-        
+
         # Find the distribution of moves (ie if all the moves are number 3, that's not very helpful)
         distribution = {}
         for top_move in top_moves:
             distribution[top_move[1]] = distribution.get(top_move[1], 0) + 1
-        
-        return top_moves
+        # Find the move that was less chosen
+        less_chosen_move_q = np.inf
+        for key in distribution.keys():
+            if distribution[key] < less_chosen_move_q:
+                less_chosen_move_q = distribution[key]
+                less_chosen_move = key
+        # Limit the selection of moves to have them all be the same number
+        moves_selected = {}
+        top_moves_evenly_distributed = []
+        for top_move in top_moves:
+            if moves_selected.get(top_move[1], 0) < less_chosen_move_q:
+                moves_selected[top_move[1]] = moves_selected.get(top_move[1], 0) + 1
+                top_moves_evenly_distributed.append(top_move)
+
+        # print('top move element')
+        # print(top_moves[0])
+        # print(distribution)
+        # print(less_chosen_move_q)
+        # print(less_chosen_move)
+        # print(moves_selected)
+        # print(len(top_moves_evenly_distributed))
+        # print(top_moves_evenly_distributed[0])
+        return top_moves_evenly_distributed
