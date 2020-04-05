@@ -61,7 +61,7 @@ while True:
     print('Playing a bunch of times...')
     simulation = PlayABunchOfGames(
         players=players,
-        loop=200
+        loop=5000
     )
     simulation.start()
     
